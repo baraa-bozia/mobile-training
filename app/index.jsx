@@ -1,59 +1,113 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
-import {Link} from 'expo-router'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
+import { Link } from 'expo-router'
+import { useTheme } from '../context/ThemeContext'
 
-const index = () => {
+const Index = () => {
+  const { darkMode, setDarkMode } = useTheme()
+
   return (
-    <View style={styles.container}>
-            <Image source={require('../assets/img/logo.png')} style={styles.logo} />
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: darkMode ? '#121212' : '#fff',
+        },
+      ]}
+    >
+      <Pressable
+        style={styles.button}
+        onPress={() => setDarkMode(!darkMode)}
+      >
+        <Text style={styles.buttonText}>
+          {darkMode ? '☀️ Light' : '🌙 Dark'}
+        </Text>
+      </Pressable>
 
-      <Text style={styles.text}>Welcome to UOE Application</Text>
-      {/* <View style={styles.card}>
-        <Text>this is a card</Text>
-      </View> */}
-      <Link style={styles.link} href="/about">About</Link>
-      <Link style={styles.link} href="/contact">contact</Link>
+      <Image
+        source={require('../assets/img/logo.png')}
+        style={styles.logo}
+      />
+
+      <Text
+        style={[
+          styles.text,
+          {
+            color: darkMode ? '#fff' : '#333',
+          },
+        ]}
+      >
+        Welcome to UOE Application
+      </Text>
+
+      <Link
+        style={[
+          styles.link,
+          {
+            color: darkMode ? '#87CEFA' : 'blue',
+          },
+        ]}
+        href="/about"
+      >
+        About
+      </Link>
+
+      <Link
+        style={[
+          styles.link,
+          {
+            color: darkMode ? '#87CEFA' : 'blue',
+          },
+        ]}
+        href="/contact"
+      >
+        Contact
+      </Link>
     </View>
   )
 }
 
-export default index
+export default Index
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'gainsboro',
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  button: {
+    position: 'absolute',
+    top: 50,
+    left: 20,
+    backgroundColor: '#4a90e2',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 10,
+  },
+
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+
   text: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#333',
     marginBottom: 50,
   },
-  card: {
-    width: '80%',
-    height: 300,
-    backgroundColor: 'lightgray',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 15,
-    boxShadow: '10px 10px 5px rgba(84, 55, 55, 0.5)',
-  },
+
   logo: {
     width: 200,
     height: 200,
     marginBottom: 50,
     resizeMode: 'contain',
-    marginVertical: 20,
     opacity: 0.5,
   },
+
   link: {
     fontSize: 18,
-    color: 'blue',
     marginBottom: 20,
     borderBottomWidth: 1,
-
   },
 })

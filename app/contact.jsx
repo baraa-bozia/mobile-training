@@ -1,33 +1,63 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
-const contact = () => {
+import { useTheme } from '../context/ThemeContext'
+
+const Contact = () => {
+  const { darkMode } = useTheme()
+
   return (
-    <View style={styles.Container}>
-      <Text style={styles.text}>contact</Text>
-        <Link style={styles.link} href="/">Home</Link>
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: darkMode ? '#121212' : '#fff',
+        },
+      ]}
+    >
+      <Text
+        style={[
+          styles.text,
+          {
+            color: darkMode ? '#fff' : '#333',
+          },
+        ]}
+      >
+        Contact
+      </Text>
+
+      <Link
+        style={[
+          styles.link,
+          {
+            color: darkMode ? '#87CEFA' : 'blue',
+          },
+        ]}
+        href="/"
+      >
+        Home
+      </Link>
     </View>
   )
 }
 
-export default contact
+export default Contact
 
 const styles = StyleSheet.create({
-    Container: {
-        flex: 1,
-        backgroundColor: '#fff',    
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    text: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#333',
-    },
-    link: {
-        fontSize: 18,
-        color: 'blue',
-        marginTop: 20,
-        borderBottomWidth: 1,
-    },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+
+  link: {
+    fontSize: 18,
+    marginTop: 20,
+    borderBottomWidth: 1,
+  },
 })
