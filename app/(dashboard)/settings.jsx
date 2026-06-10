@@ -1,3 +1,4 @@
+// Add Setting tab
 import { StyleSheet } from 'react-native'
 
 import Spacer from "../../components/Spacer"
