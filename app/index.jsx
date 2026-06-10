@@ -5,8 +5,12 @@ import ThemedView from "../components/ThemedView"
 import ThemedText from "../components/ThemedText"
 import ThemedLogo from "../components/ThemedLogo"
 import Spacer from "../components/Spacer"
+import ThemedButton from '../components/ThemedButton'
+import { Text } from 'react-native'
+import { useRouter } from 'expo-router'
 
 const Home = () => {
+  const router = useRouter()
   return (
     <ThemedView style={styles.container}>
       <ThemedLogo />
@@ -26,9 +30,12 @@ const Home = () => {
         <ThemedText>Register Page</ThemedText>
       </Link>
 
-       <Link href="/profile" style={styles.link}>
+       {/* <Link href="/profile" style={styles.link}>
         <ThemedText>Profile Page</ThemedText>
-      </Link>
+      </Link> */}
+    <ThemedButton onPress={() => router.push("/profile")}>
+  <Text style={{ color: '#f2f2f2' }}>Go to Profile</Text>
+</ThemedButton>
     </ThemedView>
   )
 }
