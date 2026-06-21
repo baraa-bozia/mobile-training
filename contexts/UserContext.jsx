@@ -16,7 +16,7 @@ export const UserContext = createContext();
 // the one who fills the box with data(provider)
 export function UserProvider({ children }) {
     const [user, setUser] = useState(null);
-const [authChecked, setAuthChecked] = useState(false);
+    const [authChecked, setAuthChecked] = useState(false);
         async function login(email, password) {
             try {
                 const res =await signInWithEmailAndPassword(auth, email, password);
@@ -24,7 +24,7 @@ const [authChecked, setAuthChecked] = useState(false);
                 // const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 // setUser(userCredential.user);
                 console.log("Login successful");
-                ToastAndroid.show("Login successful", ToastAndroid.SHORT);
+                // ToastAndroid.show("Login successful", ToastAndroid.SHORT);
                 navigate("/profile");
             } catch (error) {
                 // console.error("Login error:", error);
@@ -45,7 +45,7 @@ const [authChecked, setAuthChecked] = useState(false);
                 await signOut(auth);
                 setUser(null);
                 console.log("Logout successful");
-                ToastAndroid.show("Logout successful", ToastAndroid.SHORT);
+                // ToastAndroid.show("Logout successful", ToastAndroid.SHORT);
                 navigate("/login");
             } catch (error) {
                 console.error("Logout error:", error);

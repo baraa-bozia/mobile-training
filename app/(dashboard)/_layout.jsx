@@ -3,12 +3,14 @@ import { Tabs } from 'expo-router'
 import { useColorScheme } from 'react-native';
 import { Colors } from '../../constants/colors';
 import {Ionicons} from '@expo/vector-icons';
+import UserOnly from '../../components/auth/UserOnly';
 
 const _layout = () => {
     const colorScheme = useColorScheme();
     const theme = Colors[colorScheme] ?? Colors.light;
 
   return (
+    <UserOnly>
   <Tabs screenOptions=
   {{headerShown: false,
     tabBarStyle: {
@@ -36,6 +38,7 @@ const _layout = () => {
      color={focused ? theme.iconColorFocused : theme.iconColor}
      size={24} />}} />
     </Tabs>
+    </UserOnly>
   
   )
 }
