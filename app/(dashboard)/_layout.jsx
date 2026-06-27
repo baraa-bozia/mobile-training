@@ -37,6 +37,10 @@ const _layout = () => {
      <Tabs.Screen name="settings" options={{title: "Settings" , tabBarIcon: ({focused}) => <Ionicons name={focused ? "settings" : "settings-outline"}
      color={focused ? theme.iconColorFocused : theme.iconColor}
      size={24} />}} />
+
+        <Tabs.Screen name="books/[id]" options={{ href: null }} />
+
+
     </Tabs>
     </UserOnly>
   
